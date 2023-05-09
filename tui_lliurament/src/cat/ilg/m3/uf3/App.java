@@ -8,7 +8,7 @@ public class App {
     public static void main(String[] args) {
 
         //Creem l'array d'estudiants:
-        Student students[] = init();
+        Student students[] = initTui();
         //TODO Heu de canviar la crida a init() per la crida a initTui()
         //Student [] students = ... //TODO
 
@@ -47,30 +47,45 @@ public class App {
 
         //Ara, hem de preguntar quants estudiants volem tenir
         //Scanner in = ...
+        Scanner in = new Scanner(System.in);
+
+
 
         System.out.print("Number of students: ");
-        //TODO
+        String numberOfStudentsStr = in.nextLine();//TODO
 
-        //System.out.println("Number of students is: " + //TODO );
+        System.out.println("Number of students is: " +  numberOfStudentsStr);//TODO
 
-        //int numberOfStudents = stringToInt(numberOfStudentsStr);
+        int numberOfStudents = stringToInt(numberOfStudentsStr);
 
         //Si el número d'estudiants és més gran que 0
         //preguntarem el nom, edat i subjects de cada estudiant
-        //if(numberOfStudents > 0) {
+         if(numberOfStudents > 0) {
 
-//            students = new Student[numberOfStudents];
-//            Student newStudent;
-
-//            for(int i = 0; i < numberOfStudents; i++){
-
+             students = new Student[numberOfStudents];
+             Student newStudent;
+             for(int i = 0; i < numberOfStudents; i++){
+                 newStudent = new Student();
               //TODO - Anar preguntant els valors (name, age,...) per a cada estudiant
+                 System.out.print( (i + 1) + ".Nombre del estudiante: ");
+                 String name = in.nextLine();//TODO
+                 newStudent.name = name;
+
+                 System.out.print( (i + 1) + ".edad del estudiante: ");
+                 String ageStr = in.nextLine();//TODO
+                 int age = stringToInt(ageStr);
+                 newStudent.age = age;
+
+                 System.out.print( (i + 1) + ".Numero de asignaturas: ");
+                 String numberSubjectStr = in.nextLine();//TODO
+                 int numberSubject= stringToInt(numberSubjectStr);
+                 newStudent.amountOfEnrolledSubjects = numberSubject;
 
                 //Fiquem l'estudiant a l'array
-                //students[i] = newStudent;
-            //}
-        //}
-        //in.close();
+                 students[i] = newStudent;
+              }
+         }
+         in.close();
         return students;
     }
 
